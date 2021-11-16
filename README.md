@@ -4,6 +4,11 @@
 For the time being only Binance is supported, and the keys
 are required to fetch (very few) info from the exchange
 
+The syntax of the strategy is quite different from trality,
+but hopefully there will be further developments to mimic
+Trality API to have minimal edit required to run the backtesting
+locally
+
 
 ### Install
 
