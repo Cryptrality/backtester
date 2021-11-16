@@ -1,0 +1,3 @@
+numpy
+python-binance
+TA-lib
