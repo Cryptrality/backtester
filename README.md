@@ -6,7 +6,7 @@ are required to fetch (very few) info from the exchange
 
 The syntax of the strategy is quite different from trality,
 but hopefully there will be further developments to mimic
-Trality API to have minimal edit required to run the backtesting
+Trality API to have minimal edit required to run the backtest
 locally
 
 
@@ -37,10 +37,10 @@ it's easier to run the the module as a local folder.
 ### Without Binance API:
 
 
-It's possible to run the backstesting even omitting the Binance API keys.
-The limitation is that the data need to be store already in the cache folder
-and an arbitraty step size (the digits step in wich is possible to buyt the asset)
-will be used.
+It's possible to run the backtest even omitting the Binance API keys.
+The limitations are that the data needs to be already present in the cache 
+folder and an arbitrary step size will be used (the digits step in which is 
+possible to buy the asset).
 
 
 #### Fetch the yearly candle for a given symbol:
@@ -51,7 +51,7 @@ will be used.
     mv BTCUSDT_15m_1_1_20_31_12_20.csv cached_klines
 
 
-#### Run withouth API KEYS
+#### Run without API KEYS
 
     venv/bin/python \
         strategy_example.py --start 1-1-20 --end 31-12-20 \
