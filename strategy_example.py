@@ -16,7 +16,7 @@ parser.add_argument('--start', dest='start_date', type=str,
 parser.add_argument('--end', dest='end_date', type=str,
                     help='End date of the backtest, Time sting int the format d-m-yy, eg "30-9-21"', required = True)
 parser.add_argument('--out', dest='trade_out', type=str, default='strategy_trades.csv',
-                    help=('File name to store trades informations, in csv format. Default '
+                    help=('File name to store trades information, in csv format. Default '
                         '"strategy_trades.csv" in the current directory'))
 
 args = parser.parse_args()
@@ -26,6 +26,11 @@ os.environ['DATE_START'] = args.start_date
 os.environ['DATE_END'] = args.end_date
 from cryptrality.core import *
 from cryptrality.exchanges.backtest_binance_spot import *
+
+## TODO
+## - take the candle fetching/updating logic
+##   out of the strategy script and use trality-like data class
+##   instead
 
 
 BUY_AMOUNT = 100
@@ -89,7 +94,7 @@ def update_ochl(historical_data, candle, max_len=100):
 
 
 
-@schedule(interval="15m", symbol="BTCUSDT", window_size=200)
+@schedule(interval=CANDLE_PERIOD_STR, symbol=TRADE_SYMBOL, window_size=200)
 def on_message(ws, message):
     global historical_data, ema_long_values, ema_short_values, in_position, quantity, position_open_rec, entry_time
 
