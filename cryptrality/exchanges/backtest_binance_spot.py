@@ -12,8 +12,6 @@ from cryptrality.misc.utils import round_time, str_to_minutes
 
 DATE_START = os.environ['DATE_START']
 DATE_END = os.environ['DATE_END']
-API_KEY = os.environ['BINANCE_API_KEY']
-API_SECRET = os.environ['BINANCE_API_SECRET']
 
 try:
     SLIPPAGE = float(os.environ['SLIPPAGE'])
@@ -26,9 +24,12 @@ try:
 except KeyError:
     CACHED_KLINES_PATH = 'cached_klines'
 
-
-client = Client(API_KEY, API_SECRET)
-
+try:
+    API_KEY = os.environ['BINANCE_API_KEY']
+    API_SECRET = os.environ['BINANCE_API_SECRET']
+    client = Client(API_KEY, API_SECRET)
+except KeyError:
+    print("WARNING: proceeding without Binance client")
 
 class FakeWS:
 
@@ -113,28 +114,20 @@ class Runner:
     orders = []
     step_size = {}
 
-    def __init__(self, data_info, on_error, on_open, on_close, on_message):
-        self.data_info = data_info
-        self.on_error = on_error
-        self.on_open = on_open
-        self.on_close = on_close
-        self.on_message = on_message
-        self.ws = FakeWS()
+    def __init__(self, schedule):
+        self.schedule = schedule
         self.klines = None
     
     def __gater_data(self):
-        self.on_open(self.ws)
         symbols = []
         periods = []
         historical_data = {}
- 
-        for param in self.ws.data['params']:
-            symbol, stream_type = param.split('@')
+        for param in self.schedule.all:
+            symbol = param['symbols']
             symbol = symbol.upper()
             if symbol not in symbols:
                 symbols.append(symbol)
-            if stream_type.startswith('kline'):
-                periods.append(stream_type.split('_')[1])
+            periods.append(param['interval'])
         for symbol in symbols:
             self.position[symbol] = Position(symbol)
             historical_data[symbol] = {}
@@ -173,10 +166,10 @@ class Runner:
                 k['k']['c'])
             Runner.position[k['k']['s']].update_profit()
             Runner.current_time = k['E']
-            while len(Runner.orders) > 0:
-                o = Runner.orders.pop(0)
-                self.on_message(self.ws, json.dumps(o))
-            self.on_message(self.ws, json.dumps(k))
+            for schedule in self.schedule.all:
+                if k['k']['i'] == schedule['interval']:
+                    if k['k']['s'] in schedule['symbols']:
+                        schedule['fn'](None, json.dumps(k))
 
 
 def list_to_klines(item, symbol, period_str):

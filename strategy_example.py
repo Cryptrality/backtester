@@ -24,6 +24,7 @@ args = parser.parse_args()
 
 os.environ['DATE_START'] = args.start_date
 os.environ['DATE_END'] = args.end_date
+from cryptrality.core import *
 from cryptrality.exchanges.backtest_binance_spot import *
 
 
@@ -45,9 +46,6 @@ CSV_OUT = args.trade_out
 
 ## Caching info from previous candle/stats
 
-SOCKET, channels = socket_url(
-    TRADE_SYMBOL, [CANDLE_PERIOD_STR])
-
 
 
 in_position = False
@@ -61,8 +59,11 @@ quoted_asset_free = float(quoted_asset_balance['free'])
 quoted_asset_locked = float(quoted_asset_balance['locked'])
 
 
-
-STEP_SIZE = get_step_size(TRADE_SYMBOL)
+try:
+    STEP_SIZE = get_step_size(TRADE_SYMBOL)
+except NameError:
+    print('WARNING: set an arbitrary step size')
+    STEP_SIZE = 0.00001
 
 
 quantity = 0
@@ -87,24 +88,8 @@ def update_ochl(historical_data, candle, max_len=100):
     return historical_data
 
 
-def on_open(ws):
-    print('opened connection')
-    for channel in channels:
-        print("subscribe to %s" % channel)
-    ws.send(json.dumps(
-        {"method": "SUBSCRIBE",
-         "params": channels}
-    ))
-    print("subscribed")
 
-def on_error(ws, error):
-    print(error)
-
-def on_close(ws, status, message):
-    print('closed connection')
-    print(status)
-    print(message)
-
+@schedule(interval="15m", symbol="BTCUSDT", window_size=200)
 def on_message(ws, message):
     global historical_data, ema_long_values, ema_short_values, in_position, quantity, position_open_rec, entry_time
 
@@ -165,7 +150,5 @@ def on_message(ws, message):
 
 
 if __name__ == "__main__":
-
-    run = Runner(SOCKET, on_error=on_error, on_open=on_open,
-        on_close=on_close, on_message=on_message)
+    run = Runner(schedule)
     run.run_forever()
