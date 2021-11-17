@@ -95,7 +95,7 @@ def update_ochl(historical_data, candle, max_len=100):
 
 
 @schedule(interval=CANDLE_PERIOD_STR, symbol=TRADE_SYMBOL, window_size=200)
-def on_message(ws, message):
+def handler(ws, message):
     global historical_data, ema_long_values, ema_short_values, in_position, quantity, position_open_rec, entry_time
 
     #print('received message')
