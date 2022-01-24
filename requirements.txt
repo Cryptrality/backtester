@@ -3,5 +3,5 @@ pandas
 quantstats
 plotly
 python-binance
-TA-lib
+##TA-lib
 

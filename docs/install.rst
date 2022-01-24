@@ -24,7 +24,7 @@ From git with pip:
 
 .. code-block:: bash
 
-   pip install git+ssh://git@github.com/Cryptrality/backtester.git/
+   pip install git+ssh://git@github.com/Cryptrality/backtester.git
 
 
 After installation the `cryptrality` command line allows access to various modules:
