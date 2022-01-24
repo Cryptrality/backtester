@@ -5,7 +5,7 @@ A flexible way to backtest scripts with a trality-like API.
 
 ## Install
 
-    pip install git+ssh://git@github.com/Cryptrality/backtester.git/
+    pip install git+https://git@github.com/Cryptrality/backtester.git/
 
 
 
