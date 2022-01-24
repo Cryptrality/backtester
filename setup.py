@@ -31,7 +31,7 @@ classifier_text = '''
 
 setup(
     name='cryptrality',
-    python_requires='>3.9.0',
+    python_requires='>3.8.0',
     version=VERSION,
     description=(
         'Easily setup trading bots'),

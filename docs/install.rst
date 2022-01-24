@@ -24,7 +24,25 @@ From git with pip:
 
 .. code-block:: bash
 
-   pip install git+ssh://git@github.com/Cryptrality/backtester.git
+   pip install git+https://git@github.com/Cryptrality/backtester.git
+
+
+Conda environment:
+------------------
+
+.. code-block:: yaml
+
+    name: cryptrality
+    channels:
+      - conda-forge
+      - defaults
+    dependencies:
+      - python=3.8
+      - ta-lib
+      - sphinxcontrib-programoutput
+      - sphinx_rtd_theme
+      - pip:
+        - "--editable=git+https://git@github.com/Cryptrality/backtester.git@main#egg=cryptrality"
 
 
 After installation the `cryptrality` command line allows access to various modules:
