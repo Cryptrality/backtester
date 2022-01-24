@@ -1,7 +1,7 @@
+numpy
 pandas
 quantstats
 plotly
 python-binance
-numpy==1.18.2
-##TA-lib
+TA-lib
 
