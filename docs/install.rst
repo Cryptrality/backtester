@@ -6,7 +6,7 @@ Get started
 Requirements
 ____________
 
-*simple)bot* is wrapped in a python package.
+*Cryptrality* is wrapped in a python package.
 So `Python` is required to use the software. Only Python3 (Python >= 3.4)
 is supported.
 
