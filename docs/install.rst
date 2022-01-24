@@ -65,6 +65,15 @@ Using the `download_year` sub-command
   :shell:
 
 
+Example Run
+____________
+
+
+This is an example run with the example strategy provided 
+
+.. command-output:: cryptrality backtest -s 22-1-22 -e 25-1-22 ../example_strategies/bayes_bollinger_multicoins_cooldown.py
+  :returncode: 0
+  :shell:
 
 .. _virtualenv: https://virtualenv.pypa.io
 .. _talib: https://mrjbq7.github.io/ta-lib/install.html
