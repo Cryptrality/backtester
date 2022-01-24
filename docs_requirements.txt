@@ -1,2 +1,0 @@
-sphinxcontrib-programoutput
-sphinx_rtd_theme

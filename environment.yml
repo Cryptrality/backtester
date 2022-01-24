@@ -7,3 +7,5 @@ dependencies:
   - ta-lib
   - sphinxcontrib-programoutput
   - sphinx_rtd_theme
+- pip:
+     - "--editable=git+ssh://git@github.com/Cryptrality/backtester.git/"
