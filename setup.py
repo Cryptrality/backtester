@@ -1,4 +1,3 @@
-from _typeshed import WriteableBuffer
 from setuptools import setup
 
 from cryptrality import __version__
@@ -32,7 +31,7 @@ classifier_text = '''
 
 setup(
     name='cryptrality',
-    python_requires='>3.4.0',
+    python_requires='>3.9.0',
     version=VERSION,
     description=(
         'Easily setup trading bots'),
@@ -43,7 +42,7 @@ setup(
     license='GPLv3',
     packages=[
         'cryptrality', 'cryptrality.exchanges',
-        'cryptrality.misc'],
+        'cryptrality.subcommands'],
     test_suite='test',
     entry_points={
         'console_scripts': ['cryptrality = cryptrality.commands:main']

@@ -1,0 +1,10 @@
+# Binance auth
+
+BINANCE_API_KEY = <your_long_api_key_here>
+BINANCE_API_SECRET = <your_other_long_api_key_here>
+
+# Backtesting settings
+SLIPPAGE = 0.0008
+FEES = 0.000375
+CACHED_KLINES_PATH = cached_klines
+INITIAL_BALANCE = 1000

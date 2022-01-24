@@ -1,60 +1,24 @@
-# backtester
+# Cryptrality backtest
+
+A flexible way to backtest scripts with a trality-like API.
 
 
-For the time being only Binance is supported, and the keys
-are required to fetch (very few) info from the exchange
+## Install
 
-The syntax of the strategy is quite different from trality,
-but hopefully there will be further developments to mimic
-Trality API to have minimal edit required to run the backtest
-locally
-
-
-### Install
-
-It might be possible to install the package as a module,
-but the setup script had not being carefully maintained, so
-it's easier to run the the module as a local folder.
-
-    python3 -m venv venv
-
-    venv/bin/pip install -r requirements.txt
+    pip install git+ssh://git@github.com/Cryptrality/backtester.git/
 
 
 
-### Run a backtest
 
+### Config file
 
-    BINANCE_API_KEY="xxxx" BINANCE_API_SECRET="xxxx" venv/bin/python \
-        strategy_example.py --start 1-11-21 --end 16-11-21 \
-        --out strategy_trades.csv
+if a file named `bot.config` is found in the current directory, the content
+of the file will be parsed to get API keys and various other info.
+The content of the file look like:
 
-### Inspect performance
+    SLIPPAGE = 0.0008
+    FEES = 0.0002
+    CACHED_KLINES_PATH = cached_klines
+    INITIAL_BALANCE = 1000
 
-    python3 scripts/print_profits.py strategy_trades.csv
-
-
-### Without Binance API:
-
-
-It's possible to run the backtest even omitting the Binance API keys.
-The limitations are that the data needs to be already present in the cache 
-folder and an arbitrary step size will be used (the digits step in which is 
-possible to buy the asset).
-
-
-#### Fetch the yearly candle for a given symbol:
-
-
-    python3 scripts/download_yearly_data.py BTCUSDT 2020 15m
-    mkdir -p cached_klines
-    mv BTCUSDT_15m_1_1_20_31_12_20.csv cached_klines
-
-
-#### Run without API KEYS
-
-    venv/bin/python \
-        strategy_example.py --start 1-1-20 --end 31-12-20 \
-        --out strategy_trades.csv 
-
-
+More documentation in readthedocs.
