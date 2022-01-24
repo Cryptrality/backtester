@@ -8,4 +8,4 @@ dependencies:
   - sphinxcontrib-programoutput
   - sphinx_rtd_theme
   - pip:
-     - "--editable=git+ssh://git@github.com/Cryptrality/backtester.git#egg=cryptrality"
+     - "--editable=git+ssh://git@github.com/Cryptrality/backtester.git@main#egg=cryptrality"
