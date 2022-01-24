@@ -1,7 +1,7 @@
 name: ta-lib
 channels:
-  - ta-lib
   - conda-forge
   - defaults
 dependencies:
   - python=3.8
+  - ta-lib
