@@ -4,6 +4,7 @@ channels:
   - defaults
 dependencies:
   - python=3.8
+  - cython
   - ta-lib
   - sphinxcontrib-programoutput
   - sphinx_rtd_theme
