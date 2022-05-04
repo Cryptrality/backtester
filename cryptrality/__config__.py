@@ -55,7 +55,7 @@ else:
 if env_dict["FEES"]:
     FEES = env_dict["FEES"]
 else:
-    FEES = 0.0004
+    FEES = 0.001
 
 if env_dict["CACHED_KLINES_PATH"]:
     CACHED_KLINES_PATH = env_dict["CACHED_KLINES_PATH"]

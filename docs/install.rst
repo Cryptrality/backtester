@@ -69,7 +69,13 @@ Example Run
 ____________
 
 
-This is an example run with the example strategy provided 
+This is an Test run with a simple EMA cross RSI example strategy: 
+
+.. command-output:: cryptrality backtest -s 22-1-22 -e 25-1-22 ../example_strategies/multi_symbols_ema_rsi.py
+  :returncode: 0
+  :shell:
+
+This is another example run with a more complex strategy provided in the examples
 
 .. command-output:: cryptrality backtest -s 22-1-22 -e 25-1-22 ../example_strategies/bayes_bollinger_multicoins_cooldown.py
   :returncode: 0
