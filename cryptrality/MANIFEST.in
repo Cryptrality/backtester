@@ -1,4 +1,0 @@
-recursive-include cryptrality *.h *.c *.pyx *.pxi *.pxd *.py
-recursive-include tests *.py *.png
-include README.md
-include setup.py
