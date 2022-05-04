@@ -9,6 +9,7 @@ A Fast backtesting engine, inspired by the  `Trality`_ code-editor
 
    about
    install
+   code_editor
    configure
    api
 
