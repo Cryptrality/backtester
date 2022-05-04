@@ -4,4 +4,4 @@ quantstats
 plotly
 python-binance
 TA-lib
-
+cython
