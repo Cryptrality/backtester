@@ -137,11 +137,6 @@ else:
 # documentation.
 # html_theme_options = {}
 
-html_theme_options = {
-    "logo_only": True,
-    "display_version": False,
-}
-
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []
 
@@ -156,7 +151,7 @@ html_theme_options = {
 # of the sidebar.
 # html_logo = None
 
-html_logo = "cryptrality_logo.png"
+html_logo = "_static/cryptrality_logo.png"
 
 # The name of an image file (relative to this directory) to use as a favicon of
 # the docs.  This file should be a Windows icon file (.ico) being 16x16 or
