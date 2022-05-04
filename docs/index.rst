@@ -1,7 +1,7 @@
-Simple Bot
+Cryptrality Backtest Engine
 ============
 
-A Fast backtesting engine
+A Fast backtesting engine, inspired by the  `Trality`_ code-editor
 
 
 .. toctree::
@@ -19,3 +19,5 @@ Indexes and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+.. _Trality: https://www.trality.com

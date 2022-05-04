@@ -4,5 +4,5 @@
 About
 =====
 
-The framework is simple to use and install, as there are no external resource
-to account for, such as databases and caching systems.
+The framework is simple to use and install. There are no external resource
+required, such as databases or caching systems.
