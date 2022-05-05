@@ -21,4 +21,4 @@ The content of the file look like:
     CACHED_KLINES_PATH = cached_klines
     INITIAL_BALANCE = 1000
 
-More documentation in readthedocs.
+More documentation in [Cryptrality](https://cryptrality.readthedocs.io readthedocs pages.
