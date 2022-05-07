@@ -71,6 +71,11 @@ ____________
 
 This is an Test run with a simple EMA cross RSI example strategy: 
 
+.. literalinclude:: ../example_strategies/multi_symbols_ema_rsi.py
+   :language: py
+
+The source code is used with the following command line:
+
 .. command-output:: cryptrality backtest -s 22-1-22 -e 25-1-22 ../example_strategies/multi_symbols_ema_rsi.py
   :returncode: 0
   :shell:
