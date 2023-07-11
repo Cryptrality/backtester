@@ -25,4 +25,4 @@ More documentation in [Cryptrality](https://cryptrality.readthedocs.io)
 readthedocs pages.
 
 There is also a discord channel for people interested in brainstorming
-and chat about the engine [here](https://discord.gg/FWxTVxzA)
+and chat about the engine [here](https://discord.gg/jk8gNzg6)
