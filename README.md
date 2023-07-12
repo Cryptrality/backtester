@@ -21,8 +21,7 @@ The content of the file look like:
     CACHED_KLINES_PATH = cached_klines
     INITIAL_BALANCE = 1000
 
-More documentation in [Cryptrality](https://cryptrality.readthedocs.io)
-readthedocs pages.
+More [documentation](https://cryptrality.readthedocs.io) in Cryptrality readthedocs pages.
 
-There is also a discord channel for people interested in brainstorming
-and chat about the engine [here](https://discord.gg/jk8gNzg6)
+There is also a [discord channel](https://discord.gg/jk8gNzg6) for people interested in brainstorming
+and chat about the engine.
