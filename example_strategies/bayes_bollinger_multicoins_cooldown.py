@@ -8,13 +8,20 @@ from cryptrality.core import plot, plot_config
 STRATEGY_NAME = "Bayesian Bollinger strategy"
 
 
+#SYMBOLS = [
+#    "VITEUSDT",
+#    "MATICUSDT",
+#    "LUNAUSDT",
+#    "MANAUSDT",
+#    "ZILUSDT",
+#    "NKNUSDT",
+#]
 SYMBOLS = [
-    "VITEUSDT",
     "MATICUSDT",
-    "LUNAUSDT",
     "MANAUSDT",
     "ZILUSDT",
-    "NKNUSDT",
+    "1INCHUSDT",
+    "ZRXUSDT",
 ]
 # SYMBOLS =  [
 #     "1INCHUSDT", "ALGOUSDT", "COCOSUSDT", "LUNAUSDT", "MANAUSDT",
