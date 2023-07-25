@@ -5,3 +5,7 @@ plotly
 python-binance
 TA-lib
 cython
+flask
+flask_httpauth
+werkzeug
+gevent
