@@ -1,9 +1,9 @@
 numpy
 pandas
-quantstats
-plotly
+quantstats==0.0.59
+plotly==5.5.0
 python-binance
-TA-lib
+TA-lib==0.4.24
 cython
 flask
 flask_httpauth
