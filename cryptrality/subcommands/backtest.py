@@ -90,7 +90,7 @@ def backtest(
     parser.add_argument(
         "--exchange",
         dest="exchange",
-        default="binance_futures",
+        default="binance_spot",
         help="Define the exchange to run the backtest",
         choices=supported_exchanges,
     )

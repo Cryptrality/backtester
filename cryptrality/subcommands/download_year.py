@@ -49,7 +49,7 @@ def download_year(subparsers, module_name, argv):
         "--exchange",
         dest="exchange",
         choices=["binance_futures", "binance_spot"],
-        default="binance_futures",
+        default="binance_spot",
         help="Supported exchanges",
     )
     args = parser.parse_args(argv)
