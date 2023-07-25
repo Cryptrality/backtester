@@ -1,3 +1,5 @@
+# distutils: language=c++
+
 import os
 import importlib.machinery
 import importlib.util
@@ -8,6 +10,9 @@ from cryptrality.logger import SimpleLogger
 from cryptrality.__config__ import Config
 from datetime import datetime
 from cryptrality.plotly import trade_charts
+
+from cryptrality.web import web
+from threading import Thread
 import pandas as pd
 import quantstats as qs
 import numpy as np
@@ -85,7 +90,7 @@ def backtest(
     parser.add_argument(
         "--exchange",
         dest="exchange",
-        default="binance_spot",
+        default="binance_futures",
         help="Define the exchange to run the backtest",
         choices=supported_exchanges,
     )
@@ -155,8 +160,11 @@ def backtest(
         strategy_name = my_strategy.STRATEGY_NAME
     except AttributeError:
         strategy_name = os.path.splitext(os.path.basename(args.strategy))[0]
-
+    # web_runner = web(runner, "production", 8080)
+    # web_worker = Thread(target=web_runner.start, daemon=True)
+    # web_worker.start()
     runner.run_forever()
+    # web_runner.start()
     total_pnl = []
     pnl_str = (
         "%(symbol)s\t%(entry_date)s\t%(entry_price)s"

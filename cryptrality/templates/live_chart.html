@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            var dropdown = $('#symbol');
+            dropdown.empty();
+            dropdown.prop('selectedIndex', 0);
+
+            var url = '/trading_pairs';
+
+            // Populate dropdown
+            $.getJSON(url, function (data) {
+                $.each(data, function () {
+                    dropdown.append($('<option />').val(this).text(this));
+                })
+            });
+            $('#orders').DataTable();
+            clickHandle("click", 'Positions');
+        });
+        function candlesticks() {
+            var time_window = document.getElementById("time_window").value;
+            var symbol = document.getElementById("symbol").value;
+            $.getJSON({
+                url: "/callback" + "/" + symbol + "/" + time_window, success: function (result) {
+                    Plotly.newPlot('chart', result, { staticPlot: true });
+                }
+            });
+        };
+        function clickHandle(evt, tabName) {
+            let i, tabcontent, tablinks;
+
+            // This is to clear the previous clicked content.
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Set the tab to be "active".
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Display the clicked tab and set it to active.
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</head>
+
+<body style="font-family:arial, sans-serif">
+    <h1>Candlestick</h1>
+    <p>Make sure you select an exising symbol from the strategy, e.g. DOTUSDT</p>
+    <select id="symbol">
+    </select>
+    <select id="time_window">
+        <option value="2h">2 hours</option>
+        <option value="6h">6 hours</option>
+        <option value="24h">24 hours</option>
+        <option value="2d">2 days</option>
+    </select>
+    <button onclick="candlesticks()">refresh</button>
+    <div id="chart" class="chart"></div>
+    <div class="tab">
+        <button class="tablinks" onclick="clickHandle(event, 'Positions')">Positions</button>
+        <button class="tablinks" onclick="clickHandle(event, 'Orders')">Orders</button>
+        <button class="tablinks" onclick="clickHandle(event, 'Logs')">Logs</button>
+    </div>
+
+    <div id="Positions" class="tabcontent">
+        <h3>Meowww.</h3>
+    </div>
+
+    <div id="Orders" class="tabcontent">
+        <h3>Rawrrr.</h3>
+    </div>
+
+</body>
+
+<script>
+    d = {{ graphJSON | safe }};
+    //d.config={staticPlot: true};
+    Plotly.newPlot('chart', d, {});
+</script>
+
+</html>
