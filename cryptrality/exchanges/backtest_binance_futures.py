@@ -3,6 +3,7 @@ import random
 from datetime import datetime
 from binance.helpers import round_step_size
 from binance.client import Client
+from binance.exceptions import BinanceAPIException
 from cryptrality.misc import (
     round_time,
     str_to_minutes,
@@ -28,8 +29,10 @@ config = Config()
 
 CACHED_KLINES_PATH = config.CACHED_KLINES_PATH
 
-
-client = Client()
+try:
+    client = Client()
+except BinanceAPIException:
+    client = Client(tld='us')
 
 
 SLIPPAGE = config.SLIPPAGE
